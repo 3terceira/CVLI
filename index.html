@@ -1,61 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    
-    <script>
-        L_NO_TOUCH = false;
-        L_DISABLE_3D = false;
-    </script>
-    
-    <style>
-        html, body {width: 100%; height: 100%; margin: 0; padding: 0;}
-        #map {position: absolute; top: 0; bottom: 0; right: 0; left: 0;}
-    </style>
-    
+    <meta charset="UTF-8">
+    <title>Mapa Interativo</title>
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.6.0/Control.FullScreen.min.js"></script>
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.6.0/Control.FullScreen.css"/>
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+        html, body { width: 100%; height: 100%; margin: 0; padding: 0; }
+        #map { width: 100%; height: 100vh; }
+    </style>
 </head>
 <body>
     <div id="map"></div>
-</body>
-<script>
-    var map = L.map("map", {
-        center: [-5.514439, -47.481543],
-        zoom: 15,
-        zoomControl: true,
-        preferCanvas: false,
-    });
+    <script>
+        var map = L.map("map", {
+            center: [-5.514439, -47.481543],
+            zoom: 15,
+            zoomControl: true
+        });
 
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        minZoom: 0,
-        maxZoom: 19,
-        attribution: "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors",
-    }).addTo(map);
-    
-    var heat = L.heatLayer([
-        [-5.505547, -47.482260],
-        [-5.526701, -47.473626],
-        [-5.535442, -47.483112],
-        [-5.513599, -47.488471],
-        [-5.536939, -47.478749]
-    ], {
-        minOpacity: 0.5,
-        maxZoom: 18,
-        radius: 25,
-        blur: 15,
-    }).addTo(map);
-    
-    L.control.fullscreen().addTo(map);
-</script>
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution: "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+        }).addTo(map);
+
+        L.control.fullscreen().addTo(map);
+    </script>
+</body>
 </html>
